@@ -6,25 +6,26 @@
 # SLAM Table
 
 
-| SLAM算法 with Github                                             | Mechanism          | Appendix                                                                           |
-| :--------------------------------------------------------------- | :----------------- | :--------------------------------------------------------------------------------- |
-| [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)                 | CMU                | [Paper: LOAM](paper/LOAM:%20Lidar%20Odometry%20and%20Mapping%20in%20Real-time.pdf) |
-| [A-LOAM](https://github.com/HKUST-Aerial-Robotics/A-LOAM)        | HKUST              |                                                                                    |
-| [FAST-LIO](https://github.com/gisbi-kim/SC-A-LOAM)               | KAIST              |                                                                                    |
-| [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | Stevens            | [知乎: LeGO-LOAM分析](https://zhuanlan.zhihu.com/p/382460472)                      |
-| [SC-LeGO-LOAM](https://github.com/irapkaist/SC-LeGO-LOAM)        | KAIST              | [Github: 中文注释](https://github.com/wykxwyc/LeGO-LOAM_NOTED)                     |
-| [XCHU-SLAM](https://github.com/JokerJohn/xchu_slam)              | Beihang University | [知乎: 轻量级的3D激光SLAM系统](https://zhuanlan.zhihu.com/p/374933500)             |
-| [LOAM-LIVOX](https://github.com/hku-mars/loam_livox)             | HKU                |                                                                                    |
-| [RPG-SVO-PRO-OPEN](https://github.com/uzh-rpg/rpg_svo_pro_open)  | UZH                |                                                                                    |
+| SLAM算法 with Github                                             | Mechanism          | Appendix                                                              |
+| :--------------------------------------------------------------- | :----------------- | :-------------------------------------------------------------------- |
+| [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)                 | CMU                | [Paper: LOAM][Paper: LOAM-L]                                          |
+| [A-LOAM](https://github.com/HKUST-Aerial-Robotics/A-LOAM)        | HKUST              |                                                                       |
+| [FAST-LIO](https://github.com/gisbi-kim/SC-A-LOAM)               | KAIST              |                                                                       |
+| [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | Stevens            | [知乎: LeGO-LOAM分析][知乎LeGO-L] & [Blog: LeGO-LOAM初探][BlogLeGO-L] |
+| [SC-LeGO-LOAM](https://github.com/irapkaist/SC-LeGO-LOAM)        | KAIST              | [Github: 中文注释][Github: 中文注释-L]                                |
+| [XCHU-SLAM](https://github.com/JokerJohn/xchu_slam)              | Beihang University | [知乎: 轻量级的3D激光SLAM系统][知乎: 轻量级的3D激光SLAM系统-L]        |
+| [LOAM-LIVOX](https://github.com/hku-mars/loam_livox)             | HKU                |                                                                       |
+| [RPG-SVO-PRO-OPEN](https://github.com/uzh-rpg/rpg_svo_pro_open)  | UZH                |                                                                       |
      
 ----
 
 ## 数据集下载: 
-[Visual Odometry / SLAM Evaluation 2012](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)
-
+[Visual Odometry / SLAM Evaluation 2012](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)        
+[jackal_dataset](https://github.com/RobustFieldAutonomyLab/jackal_dataset_20170608)  
 ## 数据集使用:
 Github: [file_player_mulran](https://github.com/irapkaist/file_player_mulran)    
 Youtube: [How to run MulRan ROS file player](https://www.youtube.com/watch?v=uU-FC-GmHXA&t=45s)
+
 
 ----
 
@@ -47,4 +48,8 @@ ROS wiki: [advanced_navigation_driver](http://wiki.ros.org/advanced_navigation_d
 
 
 ----
-
+[Paper: LOAM-L]:paper/LOAM:%20Lidar%20Odometry%20and%20Mapping%20in%20Real-time.pdf
+[知乎LeGO-L]:https://zhuanlan.zhihu.com/p/382460472
+[BlogLeGO-L]:https://blog.csdn.net/learning_tortosie/article/details/86527542
+[Github: 中文注释-L]:https://github.com/wykxwyc/LeGO-LOAM_NOTED
+[知乎: 轻量级的3D激光SLAM系统-L]:https://zhuanlan.zhihu.com/p/374933500
