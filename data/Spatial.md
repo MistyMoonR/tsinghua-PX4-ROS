@@ -32,9 +32,15 @@ https://github.com/kylerlaird/advanced_navigation_driver (编译不通过)
 测试: 
 ``` bash
 rosrun advanced_navigation_driver advanced_navigation_driver
+```
 
+问题解决:
+```bash
 ##部分电脑可能会遇到权限问题，需要
 sudo chmod 777 /dev/ttyUSB0 
+##永久解决
+sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
 ``` 
 
 **Advanced Navigation 提供的JAR工具包**
