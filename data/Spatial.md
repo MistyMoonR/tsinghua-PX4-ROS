@@ -18,6 +18,7 @@
 待解决问题： 
 - [ ]  Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着
 - [X]  ROS包里面没发现GPS，后续查看 `NavSatFix`
+- [ ] ROS里面没有linear_acceleration!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ----
 
 ## 九轴IMU - Spatial:     
