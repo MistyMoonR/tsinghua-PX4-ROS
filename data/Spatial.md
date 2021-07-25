@@ -30,19 +30,40 @@ ROS wiki: [advanced_navigation_driver](http://wiki.ros.org/advanced_navigation_d
 http://wiki.ros.org/advanced_navigation_driver  (CPU占用过高)  
 https://github.com/kylerlaird/advanced_navigation_driver (编译不通过)  
 
+``` bash
+mkdir -p ~/an_driver_ws/src && cd ~/an_driver_ws/src
+
+git clone https://github.com/ros-drivers/advanced_navigation_driver.git
+
+cd ..
+
+catkin_make
+
+source devel/setup.bash
+
+echo "source ~/an_driver_ws/devel/setup.bash" >> ~/.bashrc
+```
+
 测试: 
 ``` bash
 rosrun advanced_navigation_driver advanced_navigation_driver
+
+## rviz Fixed Frame: imu
 ```
 
 问题解决:
 ```bash
 ##部分电脑可能会遇到权限问题，需要
-sudo chmod 777 /dev/ttyUSB0 
+sudo chmod 777 /dev/ttyUSB0
 ##永久解决
 sudo usermod -a -G tty $USER
 sudo usermod -a -G dialout $USER
 ``` 
+`rostopic echo /an_device/Imu   `
+
+![IMG](../pictures/spatial-imu1.png)
+
+
 
 **Advanced Navigation 提供的JAR工具包**
 文件: [`SpatialManager-5.8.jar`](../data/Spatial/SpatialManager-5.8.jar)

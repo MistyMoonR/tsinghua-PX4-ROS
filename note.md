@@ -20,6 +20,7 @@
 - [ ] ROS包里面没发现GPS，后续查看
 - [ ] IMU和激光雷达数据融合
 
+
 ## 系统框架图
 
 暂无
@@ -28,6 +29,10 @@
 决定切换ubuntu物理机，记录下中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)
 
 ----
+脚本问题解决
+``` bash
+sed -i "s/\r//" xxx.sh
+```
 
 下载 + 编译
 ``` bash
@@ -42,6 +47,26 @@ cd ..
 catkin_make
 ```
 
+
+----
+IMU 可视化 测试工具: 
+https://github.com/ccny-ros-pkg/imu_tools
+
+``` bash
+mkdir -p ~/imu_tools_ws/src && cd ~/imu_tools_ws/src
+
+git clone https://github.com/ccny-ros-pkg/imu_tools.git
+
+cd ..
+
+##编译前 注释 PLUGINLIB_DECLARE_CLASS
+
+catkin_make
+
+source devel/setup.bash
+
+echo "source ~/imu_tools_ws/devel/setup.bash" >> ~/.bashrc
+``` 
 
 ----
 
