@@ -14,7 +14,7 @@
 ----
 安装依懒(重要)
 ``` bash
-sudo apt-get install ros-VERSION-velodyne
+sudo apt-get install ros-melodic-velodyne
 ```
 安装驱动(需要到自己的工作空间下)
 ``` bash
