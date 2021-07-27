@@ -26,7 +26,31 @@
 1. ubuntu18.04 网卡没驱动，看了下要更新内核。我先试一下骚操作 ：怼USB免驱网卡 直接点software update软件让它自己更新去，更新好后重启就有了
 
 ----
+## 构建自己的ws (Velodyne16 + mti-300)
+`vm_ws`
 
+进行之前的要先安装mti300 xses驱动 [地址](data/MTi-300.md) 
+**未完成**
+``` bash
+mkdir -p ~/vm_ws/src && cd ~/vm_ws/src
+
+git clone https://github.com/ros-drivers/velodyne.git
+
+rosdep install --from-paths src --ignore-src --rosdistro YOURDISTRO -
+
+cp -R /usr/local/xsens/xsens_ros_mti_driver ./
+
+cd ..
+
+pushd src/xsens_ros_mti_driver/lib/xspublic && make && popd
+
+catkin_make
+
+source devel/setup.bash
+
+echo "source ~/vm_ws/devel/setup.bash" >> ~/.bashrc
+
+```
 
 ----
 脚本问题解决
