@@ -35,6 +35,25 @@
 lego slam测试
 ![IMG](pictures/lego-slam.png)
 
+
+切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct`
+![IMG](pictures/roof-dataset.png)
+
+经过研究发现lio slam内部带一个imu参数转换 (这么贴心)
+![IMG](pictures/imu_raw-imu_correct.png)
+参数如下
+
+``` bash
+  # Extrinsics (lidar -> IMU)
+  extrinsicTrans: [0.0, 0.0, 0.0]
+  extrinsicRot: [-1, 0, 0,
+                  0, 1, 0,
+                  0, 0, -1]
+  extrinsicRPY: [0,  1, 0,
+                 -1, 0, 0,
+                  0, 0, 1]
+```
+
 ----
 脚本问题解决
 ``` bash
