@@ -20,6 +20,7 @@
 - [ ] ROS包里面没发现GPS，后续查看
 - [ ] IMU和激光雷达数据融合
 
+
 ## 系统框架图
 
 暂无
@@ -32,14 +33,18 @@
 
 
 lego slam测试
+
 ![IMG](pictures/lego-slam.png)
 
 
-切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct`
+切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct`    
+
 ![IMG](pictures/roof-dataset.png)
 
 经过研究发现lio slam内部带一个imu参数转换 (这么贴心)
+
 ![IMG](pictures/imu_raw-imu_correct.png)
+
 参数如下
 
 ``` bash
@@ -53,7 +58,6 @@ lego slam测试
                   0, 0, 1]
 ```
 
-
 搬到NUC10上测试发现lio_sam_imuPreintegration问题
 
 解决方案: https://githubmemory.com/repo/TixiaoShan/LIO-SAM/issues/247
@@ -62,7 +66,7 @@ lego slam测试
 #纯手敲，建议自行tab补全
 sudo cp /usr/local/lib/libmetis.so /opt/ros/melodic/lib
 ```
-PS: 这个地方贼迷惑，编译要/usr，跑起来要/opt,换句话说 两边缺一不可(感觉挺合适 埋雷进去)
+PS: 这个地方贼迷惑，编译要/usr，跑起来要/opt,换句话说 两边缺一不可(感觉挺合适埋雷进去)
 
 
 测网速工具 net-tool: 
