@@ -20,7 +20,6 @@
 - [ ] ROS包里面没发现GPS，后续查看
 - [ ] IMU和激光雷达数据融合
 
-
 ## 系统框架图
 
 暂无
@@ -54,6 +53,7 @@ lego slam测试
                   0, 0, 1]
 ```
 
+<<<<<<< Updated upstream
 
 搬到NUC10上测试发现lio_sam_imuPreintegration问题
 
@@ -64,6 +64,10 @@ lego slam测试
 sudo cp /usr/local/lib/libmetis.so /opt/ros/melodic/lib
 ```
 PS: 这个地方贼迷惑，编译要/usr，跑起来要/opt,换句话说 两边缺一不可(感觉挺合适 埋雷进去)
+=======
+net-tool: 
+`vnstat`
+>>>>>>> Stashed changes
 
 ----
 脚本问题解决
