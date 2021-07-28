@@ -22,13 +22,13 @@
 ## NUC10
 
 新到手两台NUC10 i7      
-记录一下问题：
-1. ubuntu18.04 网卡没驱动，看了下要更新内核。我先试一下骚操作 ：怼USB免驱网卡 直接点software update软件让它自己更新去，更新好后重启就有了
+**ubuntu18.04 网卡没驱动**      
+解决方法: 怼USB免驱网卡 直接点software update软件让它自己更新去，更新好后重启就有了
 
 ![IMG](pictures/nuc10.png)
 
 
-nuc 开机过快，加个grub
+nuc10 开机过快，加个grub
 ``` bash
 sudo gedit /etc/default/grub
 sudo update-grub
