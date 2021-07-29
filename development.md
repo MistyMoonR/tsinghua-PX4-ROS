@@ -1,13 +1,16 @@
 # SLAM
 
 系统环境： 
-- Ubuntu18.04 LTS
+- Ubuntu18.04.5 LTS x86_64 
+- Kernel: 5.4.0-80-generic
 - ROS melodic 1.14.11
 
 硬件：
-- NUC10
-- Advanced Navigation Spatial + Tallysman GPS
+- NUC8 i7-8650U & NUC10 i7-10710U
 - 镭神激光雷达 C16
+- Xsens Mti-300
+- 路由器: AR750S
+- 飞控: PX4
 ----
 
 * [velodyne(可选)](data/Velodyne_16.md)
@@ -15,9 +18,7 @@
 * [advanced_navigation_driver](data/Spatial.md)
 
 问题：
-- [x] - 
-
-
+- [x] 文档还未完善,准备链接到ROS那边去
 
 ## NUC10
 
@@ -33,6 +34,12 @@ nuc10 开机过快，加个grub
 sudo gedit /etc/default/grub
 sudo update-grub
 ```
+
+测网速工具 net-tool: 
+
+`vnstat`
+
+
 ----
 ## 构建自己的ws (Velodyne16 + mti-300)
 `vm_ws`

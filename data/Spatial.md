@@ -1,5 +1,7 @@
 # Spatial 九轴IMU 
 
+**Important: 由于ros包里面未写加速度计这一转换, 故弃用(sad)**
+
 系统环境:
 - Ubuntu18.04.5 LTS
 - Kernel 4.9.140-tegra

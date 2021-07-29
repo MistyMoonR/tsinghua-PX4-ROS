@@ -1,17 +1,25 @@
 # PX/PX4-Avoidance
 
-记录PX4
+记录PX4 安装全过程
 
-----
 # Obstacle Detection and Avoidance
 
-----
-## 传送门
+构建px4_ws
 
-https://github.com/PX4/PX4-Avoidance
+
+* [velodyne(可选)](../data/Velodyne_16.md)
+* [lslidar_c16](../data/lslidar_c16.md)
+* [advanced_navigation_driver](../data/Spatial.md)
+
+问题：
+- [x] 虚拟机没法测试, 比如Gebzeo 
 
 ----
-PX4官网文档简直了, 先决条件Firmware应该先放前面装完
+## 环境配置note
+
+来源: https://github.com/PX4/PX4-Avoidance
+
+PX4 Github 文档简直了, 先决条件Firmware应该先放前面装完
 
 ## Run the Avoidance Gazebo Simulation
 ``` bash 

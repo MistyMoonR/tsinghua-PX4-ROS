@@ -1,6 +1,20 @@
 # tsinghua-SLAM
 
-记录SLAM
+记录SLAM一些paper, 直接用在无人机上
+
+----
+
+系统环境： 
+- Ubuntu18.04.5 LTS x86_64 
+- Kernel: 5.4.0-80-generic
+- ROS melodic 1.14.11
+  
+硬件：
+- NUC8 i7-8650U & NUC10 i7-10710U
+- 镭神激光雷达 C16 / Velodyne VPL-16
+- Xsens Mti-300
+- 路由器: AR750S
+- 飞控: PX4
 
 ----
 # SLAM Table

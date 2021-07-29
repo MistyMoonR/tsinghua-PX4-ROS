@@ -8,10 +8,13 @@
 硬件：
 - Jetson Xaiver NX
 - Velodyne16
+
 ----
-待解决问题： 
-- [ ]  -
+可选:       
+插网线, web进入后台,直接在host 部分填 `255.255.255.255` 这样同一个网段下所有设备都可以接收到来自Velodyne的数据
+
 ----
+
 安装依懒(重要)
 ``` bash
 sudo apt-get install ros-melodic-velodyne

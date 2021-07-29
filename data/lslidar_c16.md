@@ -3,7 +3,7 @@
 系统环境： 
 - Ubuntu18.04.5 LTS 
 - ROS melodic 1.14.11
-- Unitree_Ros change to ROS_ws
+
 
 硬件：
 - NUC8 i7-8650U 
@@ -12,7 +12,7 @@
 ----
 问题： 
 - [x] 使用镭神激光雷达需要把本机IP地址改成192.168.1.102 (很不喜欢这一设定) , 而且 扫描图像可能有问题。   
-- [ ] Global Options 修改 
+- [x] Global Options 修改 
 ----
 
 ## 镭神激光雷达包

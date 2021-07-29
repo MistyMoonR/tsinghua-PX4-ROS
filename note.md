@@ -1,46 +1,55 @@
 # SLAM
 
 系统环境： 
-- Ubuntu18.04 LTS
+- Ubuntu18.04.5 LTS x86_64 
+- Kernel: 5.4.0-80-generic
 - ROS melodic 1.14.11
 
 硬件：
-- NUC8 i7-8650U
-- Advanced Navigation Spatial + Tallysman GPS
+- NUC8 i7-8650U & NUC10 i7-10710U
+- Advanced Navigation Spatial + Tallysman GPS(已经放弃: ROS包没加速度计)
 - 镭神激光雷达 C16
+- Xsens Mti-300
+- 路由器: AR750S
+- 飞控: PX4
 ----
 
 * [velodyne(可选)](data/Velodyne_16.md)
 * [lslidar_c16](data/lslidar_c16.md)
 * [advanced_navigation_driver](data/Spatial.md)
+* [xsens Mti-300](data/MTi-300.md)
 
 问题：
 - [x] 使用镭神激光雷达需要把本机IP地址改成192.168.1.102 (很不喜欢这一设定) , 而且 扫描图像可能有问题。    
-- [ ] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着
-- [ ] ROS包里面没发现GPS，后续查看
-- [ ] IMU和激光雷达数据融合
+- [x] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着(放弃)
+- [x] ROS包里面没发现GPS，后续查看
+- [x] IMU和激光雷达数据融合
 
-新开个坑: PX4飞控(雾)   
 
-路由器: AR750S
+**目前进度:** 准备把SLAM搬到无人机上    
+
 
 ## 系统框架图
 
-暂无
+待补
 
 ----
 决定切换ubuntu物理机，记录下中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)
 
 
+
+## SLAM部分
+
 切换LIO-SAM算法用Ouster 数据包成功, 不知如何设置分辨率,而且映射也是有问题
 
-
-lego slam测试
-
+### lego slam测试
+初步测试不怎么理想, IMU容易飘, 有空再做测试
 ![IMG](pictures/lego-slam.png)
 
 
-切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct`    
+### lio slam测试
+
+切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct` 经过研究发现这是用于转换的数据,bag里面带上不知原因   
 
 ![IMG](pictures/roof-dataset.png)
 
@@ -70,11 +79,6 @@ lego slam测试
 sudo cp /usr/local/lib/libmetis.so /opt/ros/melodic/lib
 ```
 PS: 这个地方贼迷惑，编译要/usr，跑起来要/opt,换句话说 两边缺一不可(感觉挺合适埋雷进去)
-
-
-测网速工具 net-tool: 
-
-`vnstat`
 
 ----
 脚本问题解决
