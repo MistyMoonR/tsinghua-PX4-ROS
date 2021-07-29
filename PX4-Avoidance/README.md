@@ -11,6 +11,48 @@
 https://github.com/PX4/PX4-Avoidance
 
 ----
+PX4官网文档简直了, 先决条件Firmware应该先放前面装完
+
+## Run the Avoidance Gazebo Simulation
+``` bash 
+cd ~
+
+git clone https://github.com/PX4/Firmware.git --recursive
+
+cd ~/Firmware
+
+# Install PX4 "common" dependencies.
+./Tools/setup/ubuntu.sh --no-sim-tools --no-nuttx
+
+# Gstreamer plugins (for Gazebo camera)
+sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libgstreamer-plugins-base1.0-dev
+
+
+# This is necessary to prevent some Qt-related errors (feel free to try to omit it)
+export QT_X11_NO_MITSHM=1
+
+# Build and run simulation
+make px4_sitl_default gazebo
+
+# Quit the simulation (Ctrl+C)
+
+``` 
+
+`~/.bashrc`
+
+``` yml
+export FIRMWARE_DIR={path_to_your_Firmware}
+source $FIRMWARE_DIR/Tools/setup_gazebo.bash $FIRMWARE_DIR $FIRMWARE_DIR/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR/Tools/sitl_gazebo
+``` 
+``` bash
+# Setup some more Gazebo-related environment variables (modify this line based on the location of the Firmware folder on your machine)
+. ~/Firmware/Tools/setup_gazebo.bash ~/Firmware ~/Firmware/build/px4_sitl_default
+
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
+``` 
+
 
 虚拟机跑不通, 问题定位: http://docs.px4.io/master/en/dev_setup/dev_env_windows_vm.html
 ``` bash
@@ -25,7 +67,9 @@ sudo apt install python-catkin-tools
 
 #dataset
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
+
 chmod +x install_geographiclib_datasets.sh
+
 sudo ./install_geographiclib_datasets.sh
 
 #
@@ -36,9 +80,6 @@ mkdir -p ~/px4_ws/src && cd ~/px4_ws/src
 
 git clone https://github.com/PX4/avoidance.git
 
-#
-catkin build -w ~/px4_ws
-#/
 catkin build -w ~/px4_ws --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 echo "source ~/px4_ws/devel/setup.bash" >> ~/.bashrc
@@ -46,7 +87,12 @@ echo "source ~/px4_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ``` 
 
+
 ----
+
+来源:        
+https://zhuanlan.zhihu.com/p/158064913      
+https://docs.px4.io/master/en/computer_vision/obstacle_avoidance.html
 
 ----
 
