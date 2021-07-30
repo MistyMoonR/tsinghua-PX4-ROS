@@ -63,15 +63,17 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 
 
 虚拟机跑不通, 问题定位: http://docs.px4.io/master/en/dev_setup/dev_env_windows_vm.html
+
+NUC10 已经跑通, 有诸多问题需要解决
 ``` bash
 
-apt-get purge python3-pip
+sudo apt-get purge -y python3-pip
 
-apt-get install -y python3-pip
+sudo apt-get install -y python3-pip
 
-sudo apt install ros-melodic-mavros ros-melodic-mavros-extras
+sudo apt install -y ros-melodic-mavros ros-melodic-mavros-extras
 
-sudo apt install python-catkin-tools
+sudo apt install -y python-catkin-tools
 
 #dataset
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
@@ -79,6 +81,14 @@ wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/inst
 chmod +x install_geographiclib_datasets.sh
 
 sudo ./install_geographiclib_datasets.sh
+``` 
+脚本跑步来一般是网站问题, 需要手动网站下载      
+为了方便我把 `/usr/local/share/GeographicLib`下面需要的东西放到[Data](../data/GeographicLib)去      
+Issues:  https://github.com/mavlink/mavros/issues/963
+
+
+## 构建avoidance的工作空间
+``` bash
 
 #
 sudo apt install libpcl1 ros-melodic-octomap-*
@@ -94,7 +104,8 @@ echo "source ~/px4_ws/devel/setup.bash" >> ~/.bashrc
 
 source ~/.bashrc
 ``` 
-
+运行不起来问题: 环境变量问题:       
+Issues: https://github.com/PX4/PX4-Avoidance/issues/596
 
 ----
 
