@@ -6,7 +6,6 @@
 
 构建px4_ws
 
-
 * [velodyne(可选)](../data/Velodyne_16.md)
 * [lslidar_c16](../data/lslidar_c16.md)
 * [advanced_navigation_driver](../data/Spatial.md)
@@ -46,14 +45,6 @@ make px4_sitl_default gazebo
 
 ``` 
 
-`~/.bashrc`
-
-``` yml
-export FIRMWARE_DIR={path_to_your_Firmware}
-source $FIRMWARE_DIR/Tools/setup_gazebo.bash $FIRMWARE_DIR $FIRMWARE_DIR/build/px4_sitl_default
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR/Tools/sitl_gazebo
-``` 
 ``` bash
 # Setup some more Gazebo-related environment variables (modify this line based on the location of the Firmware folder on your machine)
 . ~/Firmware/Tools/setup_gazebo.bash ~/Firmware ~/Firmware/build/px4_sitl_default
@@ -65,6 +56,8 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 虚拟机跑不通, 问题定位: http://docs.px4.io/master/en/dev_setup/dev_env_windows_vm.html
 
 NUC10 已经跑通, 有诸多问题需要解决
+
+## 数据集下载
 ``` bash
 
 sudo apt-get purge -y python3-pip
@@ -89,11 +82,8 @@ Issues:  https://github.com/mavlink/mavros/issues/963
 
 ## 构建avoidance的工作空间
 ``` bash
-
-#
 sudo apt install libpcl1 ros-melodic-octomap-*
 
-#
 mkdir -p ~/px4_ws/src && cd ~/px4_ws/src
 
 git clone https://github.com/PX4/avoidance.git
@@ -107,6 +97,25 @@ source ~/.bashrc
 运行不起来问题: 环境变量问题:       
 Issues: https://github.com/PX4/PX4-Avoidance/issues/596
 
+记录一下环境变量
+
+`~/.bashrc`
+
+``` yml
+export FIRMWARE_DIR=~/Firmware
+source $FIRMWARE_DIR/Tools/setup_gazebo.bash $FIRMWARE_DIR $FIRMWARE_DIR/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$FIRMWARE_DIR/Tools/sitl_gazebo
+source ~/px4_ws/devel/setup.bash
+``` 
+
+`~/px4_ws/devel/setup.bash`
+
+``` yml
+. /home/ros/Firmware/Tools/setup_gazebo.bash /home/ros/Firmware /home/ros/Firmware/build/px4_sitl_default
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
+export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/ros/px4_ws/src/avoidance/avoidance/sim/models
+``` 
 ----
 
 来源:        
