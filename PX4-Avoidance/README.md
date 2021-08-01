@@ -4,6 +4,11 @@
 
 # Obstacle Detection and Avoidance
 
+官方文档: 
+https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html
+
+模型: https://docs.px4.io/master/en/simulation/gazebo_vehicles.html
+
 构建px4_ws
 
 * [velodyne(可选)](../data/Velodyne_16.md)
@@ -19,6 +24,8 @@
 来源: https://github.com/PX4/PX4-Avoidance
 
 PX4 Github 文档简直了, 先决条件Firmware应该先放前面装完
+
+指导: https://docs.px4.io/master/en/ros/mavros_installation.html
 
 ## Run the Avoidance Gazebo Simulation
 ``` bash 
@@ -116,6 +123,13 @@ source ~/px4_ws/devel/setup.bash
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/ros/px4_ws/src/avoidance/avoidance/sim/models
 ``` 
+测试
+
+``` bash
+roslaunch local_planner local_planner_stereo.launch
+
+``` 
+
 ----
 
 来源:        
