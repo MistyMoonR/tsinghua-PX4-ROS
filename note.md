@@ -118,6 +118,11 @@ source devel/setup.bash
 
 echo "source ~/imu_tools_ws/devel/setup.bash" >> ~/.bashrc
 ``` 
+----
+路由器到手，测一下延迟。结论: 过路由和直连延迟都差不多，看来是有NSS硬件加速...
+
+![IMG](pictures/ping.png)
+
 
 ----
 
