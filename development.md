@@ -39,6 +39,13 @@ sudo update-grub
 
 `vnstat`
 
+----
+
+扩盘神器: `Gparted`
+``` bash
+sudo apt install gparted
+``` 
+然后点点点就好了, 去他妈的手敲命令
 
 ----
 ## 构建自己的ws (Velodyne16 + mti-300)
