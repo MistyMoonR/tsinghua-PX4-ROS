@@ -27,6 +27,9 @@
 问题：
 - [x] -
 
+
+大概过程:  `ubuntu.sh` -> `ubuntu_sim_ros_melodic.sh` -> `PX4-Autopilot.git`
+
 ----
 ## 环境配置note
 
@@ -40,8 +43,13 @@ git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 #Run the ubuntu.sh with no arguments (in a bash shell) to install everything
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ``` 
+## ROS/Gazebo
 
+``` bash 
+wget https://raw.githubusercontent.com/PX4/Devguide/master/build_scripts/ubuntu_sim_ros_melodic.sh
 
+bash ubuntu_sim_ros_melodic.sh
+``` 
 
 ## ROS with MAVROS Installation Guide
 来源: https://docs.px4.io/master/en/ros/mavros_installation.html
