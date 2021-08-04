@@ -32,6 +32,13 @@
 ----
 ## 环境配置note
 
+运行 前可能需要切换python3版本, 查看方式 `python -V`
+``` bash
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+``` 
+
+
 ## Ubuntu Setup
 来源: https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html     
 
