@@ -27,29 +27,49 @@
 问题：
 - [x] -
 
-
 大概过程:  `ubuntu.sh` -> `ubuntu_sim_ros_melodic.sh` -> `PX4-Autopilot.git`
 
 ----
 ## 环境配置note
 
-## Ubuntu Development Environment
+## Ubuntu Setup
 来源: https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html     
-含有两个Scripts: 先慢慢看过程...
+
 
 ``` bash 
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 
-#Run the ubuntu.sh with no arguments (in a bash shell) to install everything
+# Run the ubuntu.sh with no arguments (in a bash shell) to install everything
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ``` 
-## ROS/Gazebo
+**完成后要重启**
+
+安装: ROS/Gazebo
 
 ``` bash 
 wget https://raw.githubusercontent.com/PX4/Devguide/master/build_scripts/ubuntu_sim_ros_melodic.sh
 
 bash ubuntu_sim_ros_melodic.sh
 ``` 
+不出意外的话这里步骤会把 PX4-Autopilot的ROS 工作空间编译通过
+
+
+进入PX4源码目录，编译
+``` bash 
+cd ~/PX4-Autopilot [tab]
+# Jmavsim
+make px4_sitl jmavsim
+# Gazebo
+make px4_sitl gazebo
+``` 
+进入PX4源码目录，测试roslaunch
+``` bash 
+source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd):$(pwd)/Tools/sitl_gazebo
+
+roslaunch px4 multi_uav_mavros_sitl.launch
+``` 
+
 
 ## ROS with MAVROS Installation Guide
 来源: https://docs.px4.io/master/en/ros/mavros_installation.html
@@ -102,12 +122,6 @@ wstool init ~/catkin_ws/src
     source devel/setup.bash
     ``` 
 
-
-
-## 构建autopoilot的工作空间
-``` bash
-
-``` 
 
 
 测试
