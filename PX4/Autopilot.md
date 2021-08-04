@@ -27,31 +27,40 @@
 问题：
 - [x] -
 
+**最好需要一台新的Ubuntu18.04环境, 里面不配置任何东西. 换个源就够**           
+脚本: [sources-tools.sh](../scripts/sources-tools.sh)
+
 大概过程:  `ubuntu.sh` -> `ubuntu_sim_ros_melodic.sh` -> `PX4-Autopilot.git`
 
 ----
-## 环境配置note
+## 环境配置note (已经过测试)
 
-运行 前可能需要切换python3版本, 查看方式 `python -V`
+运行前需要切换python3版本, 查看方式 `python -V`
 ``` bash
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 ``` 
 
+顺便更新一下pip (虚拟机安装过程中发现问题)
+``` bash 
+sudo python -m pip install --upgrade --force pip 
+``` 
 
 ## Ubuntu Setup
+
 来源: https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html     
 
-
+### 下载源码, 运行脚本
 ``` bash 
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-
 # Run the ubuntu.sh with no arguments (in a bash shell) to install everything
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+# 安装后要重启
+sudo reboot
 ``` 
-**完成后要重启**
 
-安装: ROS/Gazebo
+
+### 安装: ROS/Gazebo
 
 ``` bash 
 wget https://raw.githubusercontent.com/PX4/Devguide/master/build_scripts/ubuntu_sim_ros_melodic.sh
@@ -78,7 +87,7 @@ roslaunch px4 multi_uav_mavros_sitl.launch
 ``` 
 
 
-## ROS with MAVROS Installation Guide
+## ROS with MAVROS Installation Guide (未经过测试)
 来源: https://docs.px4.io/master/en/ros/mavros_installation.html
 
 ### ROS repository
@@ -92,49 +101,50 @@ sudo bash ./install_geographiclib_datasets.sh
 ``` 
 ### Source Installation
 ``` bash 
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws
+mkdir -p ~/catkin_ws/src && cd ~/catkin_ws
+
 catkin init
+
 wstool init src
 ``` 
 
+1.Install MAVLink: 已经修改成 melodic
 ``` bash 
-wstool init ~/catkin_ws/src
+rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall
 ``` 
-
-1. Install MAVLink: 已经修改成 melodic
-    ``` bash 
-    rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall
-    ``` 
-2. MAVROS Released/stable
-    ``` bash
-    rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
-    ``` 
-3. Create workspace & deps
-    ``` bash
-    wstool merge -t src /tmp/mavros.rosinstall
-    wstool update -t src -j4
-    rosdep install --from-paths src --ignore-src -y
-    ``` 
-4. GeographicLib datasets
-    ``` bash
-    ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
-    ``` 
-5. Build source
-    ``` bash
-    catkin build
-    ``` 
-6. setup.bash
-    ``` bash
-    source devel/setup.bash
-    ``` 
-
-
+2.MAVROS Released/stable
+``` bash
+rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
+``` 
+3.Create workspace & deps
+``` bash
+wstool merge -t src /tmp/mavros.rosinstall
+wstool update -t src -j4
+rosdep install --from-paths src --ignore-src -y
+``` 
+4.GeographicLib datasets
+``` bash
+./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+``` 
+5.Build source
+``` bash
+catkin build
+``` 
+6.setup.bash
+``` bash
+source devel/setup.bash
+``` 
 
 测试
 
-``` bash
+## 问题总览
 
+#Error:
+Command "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-r0armvum/pymavlink/
+
+解决方法: 
+``` bash 
+sudo python -m pip install --upgrade --force pip 
 ``` 
 
 ----

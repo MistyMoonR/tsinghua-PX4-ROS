@@ -53,7 +53,6 @@ cd ~/Firmware
 # Gstreamer plugins (for Gazebo camera)
 sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libgstreamer-plugins-base1.0-dev
 
-
 # This is necessary to prevent some Qt-related errors (feel free to try to omit it)
 export QT_X11_NO_MITSHM=1
 
@@ -61,7 +60,6 @@ export QT_X11_NO_MITSHM=1
 make px4_sitl_default gazebo
 
 # Quit the simulation (Ctrl+C)
-
 ``` 
 
 ``` bash
@@ -78,7 +76,6 @@ NUC10 已经跑通, 有诸多问题需要解决
 
 ## 数据集下载
 ``` bash
-
 sudo apt-get purge -y python3-pip
 
 sudo apt-get install -y python3-pip
@@ -139,7 +136,6 @@ export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/ros/px4_ws/src/avoidance/avo
 
 ``` bash
 roslaunch local_planner local_planner_stereo.launch
-
 ``` 
 
 ----
