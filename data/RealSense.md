@@ -9,13 +9,10 @@
 - Jetson Xaiver NX / NUC / EPYC
 - intel D435i & D455
 ----
-待解决问题： 
-- [ ]  -
-----
 
-## 驱动安装:
+## 驱动安装
 Download tar.gz            
-Github [librealsense](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)  
+Github [librealsense v2.45.0](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)  
 
 ``` bash
 cd librealsense [tab]
@@ -31,16 +28,34 @@ make clean
 make ##不能多核编译，会报错(应该是内存不足原因)
 sudo make install
 ```
-
-测试(可选)
+测试
 ``` bash
 realsense-viewer 
 ```
 ## ROS包安装
 Github: [realsense-ros](https://github.com/IntelRealSense/realsense-ros)
 
+``` bash
+mkdir -p ~/realsense_ws/src && cd ~/realsense_ws/src
 
+git clone https://github.com/IntelRealSense/realsense-ros.git
+
+cd ..
+
+catkin_make
+
+source devel/setup.bash
+
+echo "source ~/realsense_ws/devel/setup.bash" >> ~/.bashrc
+```
+测试
+``` bash
+roslaunch realsense2_camera rs_camera.launch filters:=pointcloud
+
+rviz
+```
+需要把 `Global Options` 中修改为 `/camera_link`
 
 ----
-来源：
+
 

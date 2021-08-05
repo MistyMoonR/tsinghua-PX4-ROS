@@ -11,22 +11,32 @@
 
 ----
 问题： 
-- [x] 使用镭神激光雷达需要把本机IP地址改成192.168.1.102 (很不喜欢这一设定) , 而且 扫描图像可能有问题。   
-- [x] Global Options 修改 
+- [x] 使用镭神激光雷达需要把本机IP地址改成192.168.1.102 才能接收到点云信息
 ----
 
 ## 镭神激光雷达包
 来源： https://github.com/tianb03/lslidar_c16
 
-测试：  
+``` bash
+mkdir -p ~/lslidar_ws/src && cd ~/lslidar_ws/src
 
+cp -R /usr/local/xsens/xsens_ros_mti_driver ./
+
+cd ..
+
+catkin_make
+
+source devel/setup.bash
+
+echo "source ~/lslidar_ws/devel/setup.bash" >> ~/.bashrc
+``` 
+测试：  
 ``` bash
 roslaunch lslidar_c16_decoder lslidar_c16.launch --screen    
 ```
 需要把 `Global Options` 中修改为 `/laser_link`
 
 ![IMG](/pictures/lslidar_c16_7.13.png)
-
 
 ----
 来源：

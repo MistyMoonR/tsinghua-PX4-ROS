@@ -3,12 +3,12 @@
 系统环境： 
 - Ubuntu18.04.5 LTS aarch64
 - Kernel 4.9.140-tegra
-- ROS melodic 1.14.11
-
+- ROS melodic 1.14.11   
+      
 硬件：
 - Jetson Xaiver NX
 - Velodyne16
-
+  
 ----
 可选:       
 插网线, web进入后台,直接在host 部分填 `255.255.255.255` 这样同一个网段下所有设备都可以接收到来自Velodyne的数据
@@ -32,7 +32,7 @@ cd ~/catkin_ws/ #需要修改path
 catkin_make
 ```
 
-测试(可选)
+测试
 ``` bash
 roslaunch velodyne_pointcloud VLP16_points.launch
 
@@ -41,9 +41,8 @@ rosnode list
 rostopic echo /velodyne_points
 
 rosrun rviz rviz -f velodyne
-
-#或者 输入rviz然后把坐标选velodyne
 ```
+需要把 `Global Options` 中修改为 `/velodyne`
 
 ![IMG](/pictures/Velodyne-16.png)
 

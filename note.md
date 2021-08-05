@@ -14,28 +14,25 @@
 - 飞控: PX4
 ----
 
+传送门: 
 * [velodyne(可选)](data/Velodyne_16.md)
 * [lslidar_c16](data/lslidar_c16.md)
 * [advanced_navigation_driver](data/Spatial.md)
 * [xsens Mti-300](data/MTi-300.md)
 
 问题：
-- [x] 使用镭神激光雷达需要把本机IP地址改成192.168.1.102 (很不喜欢这一设定) , 而且 扫描图像可能有问题。    
-- [x] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着(放弃)
-- [x] ROS包里面没发现GPS，后续查看
-- [x] IMU和激光雷达数据融合
 
+- [x] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着(放弃)
+- [x] IMU和激光雷达数据融合
 
 **目前进度:** 准备把SLAM搬到无人机上    
 
-
 ## 系统框架图
 
-待补
+![IMG](pictures/frame-v0.1.png)
 
 ----
-决定切换ubuntu物理机，记录下中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)
-
+ubuntu中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)
 
 
 ## SLAM部分
@@ -45,7 +42,6 @@
 ### lego slam测试
 初步测试不怎么理想, IMU容易飘, 有空再做测试
 ![IMG](pictures/lego-slam.png)
-
 
 ### lio slam测试
 
