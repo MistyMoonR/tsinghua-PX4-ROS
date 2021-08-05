@@ -40,9 +40,12 @@ PX4 Github 文档简直了, 先决条件Firmware应该先放前面装完
 指导: https://docs.px4.io/master/en/ros/mavros_installation.html
 
 ## Run the Avoidance Gazebo Simulation
+
+这部分可以忽略(如果运行Autopilot的教程的话)
 ``` bash 
 cd ~
 
+# 和https://github.com/PX4/PX4-Autopilot.git 就是一个东西!!!!!!!!!!!!!
 git clone https://github.com/PX4/Firmware.git --recursive
 
 cd ~/Firmware
@@ -69,16 +72,12 @@ make px4_sitl_default gazebo
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 ``` 
 
-
 虚拟机跑不通, 问题定位: http://docs.px4.io/master/en/dev_setup/dev_env_windows_vm.html
 
 NUC10 已经跑通, 有诸多问题需要解决
 
 ## 数据集下载
 ``` bash
-sudo apt-get purge -y python3-pip
-
-sudo apt-get install -y python3-pip
 
 sudo apt install -y ros-melodic-mavros ros-melodic-mavros-extras
 
@@ -92,11 +91,18 @@ chmod +x install_geographiclib_datasets.sh
 sudo ./install_geographiclib_datasets.sh
 ``` 
 脚本跑步来一般是网站问题, 需要手动网站下载      
-为了方便我把 `/usr/local/share/GeographicLib`下面需要的东西放到[Data](../data/GeographicLib)去      
+为了方便我把 `/usr/share/GeographicLib`下面需要的东西放到[Data](../data/GeographicLib)去      
 Issues:  https://github.com/mavlink/mavros/issues/963
 
 
 ## 构建avoidance的工作空间
+
+需要把环境换成python2.7
+``` bash
+sudo update-alternatives --config python
+## 选择编号
+``` 
+
 ``` bash
 sudo apt install libpcl1 ros-melodic-octomap-*
 
@@ -133,6 +139,12 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/ros/px4_ws/src/avoidance/avoidance/sim/models
 ``` 
 测试
+
+先运行[APP](../data/QGroundControl.AppImage) 
+``` bash
+cd Desktop
+./QGroundControl.AppImage
+``` 
 
 ``` bash
 roslaunch local_planner local_planner_stereo.launch

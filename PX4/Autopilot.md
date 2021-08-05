@@ -14,7 +14,7 @@
 - 路由器: AR750S
 - 飞控: PX4
 
-# Obstacle Detection and Avoidance
+# Autopilot
 
 官方文档: 
 
