@@ -47,6 +47,11 @@ sudo apt install gparted
 ``` 
 然后点点点就好了, 去他妈的手敲命令
 
+vscode 提示权限不足问题
+```bash
+sudo chmod -R 777 xxx_ws
+```
+
 ----
 ## 构建自己的ws (Velodyne16 + mti-300)
 `vm_ws`
