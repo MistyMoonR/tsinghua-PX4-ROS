@@ -146,9 +146,19 @@ cd Desktop
 ./QGroundControl.AppImage
 ``` 
 
+局部规划测试: (gazebo)
 ``` bash
 roslaunch local_planner local_planner_stereo.launch
 ``` 
+实际机器测试: 需要先跑一边脚本 `tools\generate_launchfile.sh.deprecated`
+
+改脚本会在`local_planner`地址下面生成一个`avoidance.launch`文件, 不过的需要一个`px4_config.ymal` 从`avoidance\resource`那边复制了一个过来(看不懂)
+```bash
+roslaunch avoidance.launch 
+```
+
+
+
 
 ----
 
@@ -183,3 +193,55 @@ ROS wiki: [advanced_navigation_driver](http://wiki.ros.org/advanced_navigation_d
 [BlogLeGO-L]:https://blog.csdn.net/learning_tortosie/article/details/86527542
 [Github中文注释-L]:https://github.com/wykxwyc/LeGO-LOAM_NOTED
 [知乎3D激光SLAM系统-L]:https://zhuanlan.zhihu.com/p/374933500
+
+
+``` html
+<launch>
+    <arg name="ns" default="/"/>
+    <arg name="fcu_url" default="/dev/ttyUSB0:921600"/>    
+    <arg name="gcs_url" default="udp://@127.0.0.1:14550" />   <!-- GCS link is provided by SITL -->
+    <arg name="tgt_system" default="1" />
+    <arg name="tgt_component" default="1" />
+
+
+ <!-- Launch static transform publishers -->
+  <node pkg="tf" type="static_transform_publisher" name="tf_depth_camera"
+          args="0.25 0 0.12 0 0 0 fcu camera_link 10"/>
+
+
+    <!-- Launch MavROS -->
+    <group ns="$(arg ns)">
+        <include file="$(find mavros)/launch/node.launch">
+            <arg name="pluginlists_yaml" value="$(find mavros)/launch/px4_pluginlists.yaml" />
+            <!-- Need to change the config file to get the tf topic and get local position in terms of local origin -->
+            <arg name="config_yaml" value="$(find local_planner)/resource/px4_config.yaml" />
+            <arg name="fcu_url" value="$(arg fcu_url)" />
+            <arg name="gcs_url" value="$(arg gcs_url)" />
+            <arg name="tgt_system" value="$(arg tgt_system)" />
+            <arg name="tgt_component" value="$(arg tgt_component)" />
+        </include>
+    </group>
+
+    <!-- Launch cameras -->
+   <include file="$(find realsense2_camera)/launch/rs_d435_camera.launch" >
+  </include>
+
+
+    <!-- Launch avoidance -->
+    <env name="ROSCONSOLE_CONFIG_FILE" value="$(find local_planner)/resource/custom_rosconsole.conf"/>
+    <arg name="pointcloud_topics" default="[/camera/depth/color/points]"/>
+
+
+    <!-- Launch local planner -->
+    <node name="local_planner_node" pkg="local_planner" type="local_planner_node" output="screen" required="true" >
+      <param name="goal_x_param" value="0" />
+      <param name="goal_y_param" value="0"/>
+      <param name="goal_z_param" value="4" />
+      <rosparam param="pointcloud_topics" subst_value="True">$(arg pointcloud_topics)</rosparam>
+    </node>
+    
+    <!-- set or toggle rqt parameters -->
+    <node name="rqt_param_toggle" pkg="local_planner" type="rqt_param_toggle.sh" />
+
+</launch>
+```
