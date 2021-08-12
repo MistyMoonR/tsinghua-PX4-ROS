@@ -29,15 +29,13 @@
 
 ## 系统框架图
 
-![IMG](pictures/frame-v0.1.png)
+![IMG](pictures/frame-v0.2.png)
 
 ----
 ubuntu中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)
 
 
 ## SLAM部分
-
-切换LIO-SAM算法用Ouster 数据包成功, 不知如何设置分辨率,而且映射也是有问题
 
 ### lego slam测试
 初步测试不怎么理想, IMU容易飘, 有空再做测试
@@ -148,11 +146,7 @@ https://www.jianshu.com/p/6dd2c08d688e
 | --pause         | 开始暂停,空格恢复    |
 | -a              | record 记录所有topic |
 
-
-
 ----
-
-
 
 [Velodyne激光雷达ROS](../data/Velodyne_16.md)(可选)
   
@@ -177,30 +171,6 @@ roslaunch lslidar_c16_decoder lslidar_c16.launch --screen
 ![IMG](pictures/lslidar_c16_7.13.png)
 
 ----
-
-## 九轴IMU - Spatial:     
-Official website: [Spatial](https://www.advancednavigation.com/products/spatial)        
-ROS wiki: [advanced_navigation_driver](http://wiki.ros.org/advanced_navigation_driver) 
-
-ROS:         
-http://wiki.ros.org/advanced_navigation_driver  (CPU占用过高)  
-https://github.com/kylerlaird/advanced_navigation_driver (编译不通过)  
-
-测试: 
-``` bash
-rosrun advanced_navigation_driver advanced_navigation_driver
-``` 
-[`Advanced Navigation ROS Driver Notes.txt`](code/ROS_ws/src/unitree_ros/advanced_navigation_driver/Advanced-Navigation-ROS-Driver-Notes.txt) 在 `/ROS_ws/src/unitree_ros/advanced_navigation_driver` 里面有详细介绍
-
-
-**Advanced Navigation 提供的JAR工具包**
-
-文件: [`SpatialManager-5.8.jar`](../data/Spatial/SpatialManager-5.8.jar)
-``` bash
-sudo java -jar SpatialManager-5.8.jar 
-``` 
-
-![IMG](pictures/spatial.png)
 
 ----
 # IMU的坐标变换 TF
