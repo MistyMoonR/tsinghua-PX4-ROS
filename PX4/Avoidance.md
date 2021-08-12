@@ -179,9 +179,18 @@ QGC进去修改参数:
 
 然后把制作好的串口线插到`TELEM 2`接口
 
+查找ttyUSB    
+```bash
+ls -l /dev/ttyUSB*
+```
+
 测试`mavros`
 ```bash
-roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:udp://@127.0.0.1:14550
+#本机调试
+roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@127.0.0.1:14550
+
+#主机调试
+roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@192.168.124.133:14550
 ```
 然后本机器运行QGC, 不出意外的话会显示connected
 

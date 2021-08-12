@@ -22,7 +22,7 @@
 
 ## NUC10
 
-新到手两台NUC10 i7      
+新到手四台NUC10 i7      
 **ubuntu18.04 网卡没驱动**      
 解决方法: 怼USB免驱网卡 直接点software update软件让它自己更新去，更新好后重启就有了
 
@@ -35,9 +35,16 @@ sudo gedit /etc/default/grub
 sudo update-grub
 ```
 
-测网速工具 net-tool: 
+测网速工具 net-tool: `vnstat`
 
-`vnstat`
+负载测试: 
+`stress`   
+
+实测12V DC可用给NUC10供电而且能过stress测试, 需要大电流.
+
+```bash
+stress --cpu 12 --timeout 300
+```
 
 ----
 
