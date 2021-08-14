@@ -23,15 +23,15 @@ MAVROS: https://docs.px4.io/master/en/ros/mavros_installation.html
 
 ## NUC10上运行 
 
-实际机器测试: 需要先跑一边脚本 `tools\generate_launchfile.sh.deprecated`    
+实际机器测试: 需要先跑一边脚本 `tools/generate_launchfile.sh.deprecated`    
 (不懂为何deprecated)
 
-会在`local_planner`地址下面生成一个`avoidance.launch`文件, 不过的需要一个`px4_config.ymal` 从`avoidance\resource`那边复制了一个过来
+会在`local_planner`地址下面生成一个`avoidance.launch`文件, 不过的需要一个`px4_config.ymal` 从`avoidance/resource`那边复制了一个过来
 
 ```bash
-cd ~\px4_ws\src\avoidance
+cd ~/px4_ws/src/avoidance
 # 官方没说明为何废弃
-bash tools\generate_launchfile.sh.deprecated
+bash tools/generate_launchfile.sh.deprecated
 ```
 进去修改一下, 参考下面`avoidance.launch`
 
@@ -71,9 +71,11 @@ roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@127.0.0
 ``` bash
 roslaunch realsense2_camera rs_camera.launch filters:=pointcloud
 
-cd ~\px4_ws\src\avoidance\local_planner\launch
-
+cd ~/px4_ws/src/avoidance/local_planner/launch
 roslaunch avoidance.launch
+
+# OR
+roslaunch ~/px4_ws/src/avoidance/local_planner/launch/avoidance.launch
 ```
 ----
 

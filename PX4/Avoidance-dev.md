@@ -117,7 +117,44 @@ source ~/px4_ws/devel/setup.bash
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/Firmware
 export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:/home/ros/px4_ws/src/avoidance/avoidance/sim/models
 ``` 
-测试
+
+### MAVROS Installation
+``` bash 
+mkdir -p ~/catkin_ws/src && cd ~/catkin_ws
+
+catkin init
+
+wstool init src
+``` 
+
+1.Install MAVLink: 已经修改成 melodic
+``` bash 
+rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall
+``` 
+2.MAVROS Released/stable
+``` bash
+rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
+``` 
+3.Create workspace & deps
+``` bash
+wstool merge -t src /tmp/mavros.rosinstall
+wstool update -t src -j4
+rosdep install --from-paths src --ignore-src -y
+``` 
+4.GeographicLib datasets
+``` bash
+./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+``` 
+5.Build source
+``` bash
+catkin build
+``` 
+6.setup.bash
+``` bash
+source devel/setup.bash
+``` 
+
+## 测试
 
 运行 [QGroundControl](../data/QGroundControl.AppImage)    
 下载地址: http://qgroundcontrol.com/
@@ -132,16 +169,16 @@ roslaunch local_planner local_planner_stereo.launch
 ``` 
 ## NUC10上运行 
 
-实际机器测试: 需要先跑一边脚本 `tools\generate_launchfile.sh.deprecated`    
+实际机器测试: 需要先跑一边脚本 `tools/generate_launchfile.sh.deprecated`    
 (不懂为何deprecated)
 
-会在`local_planner`地址下面生成一个`avoidance.launch`文件, 不过的需要一个`px4_config.ymal` 从`avoidance\resource`那边复制了一个过来
+会在`local_planner`地址下面生成一个`avoidance.launch`文件, 不过的需要一个`px4_config.ymal` 从`avoidance/resource`那边复制了一个过来
       
 
 ```bash
-cd ~\px4_ws\src\avoidance
+cd ~/px4_ws/src/avoidance
 # 官方没说明为何废弃
-bash tools\generate_launchfile.sh.deprecated
+bash tools/generate_launchfile.sh.deprecated
 ```
 进去修改一下, 参考下面`avoidance.launch`
 
@@ -181,7 +218,7 @@ roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@127.0.0
 ``` bash
 roslaunch realsense2_camera rs_camera.launch filters:=pointcloud
 
-cd ~\px4_ws\src\avoidance\local_planner\launch
+cd ~/px4_ws/src/avoidance/local_planner/launch/
 
 roslaunch avoidance.launch
 ```
@@ -193,13 +230,14 @@ roslaunch avoidance.launch
 <launch>
     <arg name="ns" default="/"/>
     <arg name="fcu_url" default="/dev/ttyUSB0:921600"/>    
+    <arg name="gcs_url" default="" />   
     <!-- <arg name="gcs_url" default="udp://@127.0.0.1:14550" />    -->
     <!-- GCS link is provided by SITL -->
     <arg name="tgt_system" default="1" />
     <arg name="tgt_component" default="1" />
 
   <!-- Launch static transform publishers -->
-  <node pkg="tf" type="static_transform_publisher" name="tf_depth_camera" args="0.15 0 -0.15 0 0 0 fcu camera_link 10"/>
+  <node pkg="tf" type="static_transform_publisher" name="tf_depth_camera" args="0.15 0 0 0 0 0 fcu camera_link 10"/>
   <!-- <node pkg="tf" type="static_transform_publisher" name="link1_link2_broadcaster" args="x y z yaw pitch raw link1 link2 100" /> -->
 
     <!-- Launch MavROS -->
