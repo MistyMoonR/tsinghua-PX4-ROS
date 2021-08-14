@@ -175,7 +175,6 @@ roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@127.0.0
 > - RTT too high for timesync 延迟过大       
 > 解决办法: PX4和NUC时区不同导致, 更改NUC上面时区为UTC + 0 然后重启解决
 
-
 ## 运行avoidance
 不过需要写个脚本分别运行相机和avoidance避障
 
@@ -186,7 +185,6 @@ cd ~\px4_ws\src\avoidance\local_planner\launch
 
 roslaunch avoidance.launch
 ```
-
 ----
 
 ## `avoidance.launch` 记录
