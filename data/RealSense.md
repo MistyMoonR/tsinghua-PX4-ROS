@@ -42,6 +42,9 @@ git clone https://github.com/IntelRealSense/realsense-ros.git
 
 cd ..
 
+# 缺少ddynamic
+sudo apt install ros-melodic-ddynamic-reconfigure
+
 catkin_make
 
 source devel/setup.bash
