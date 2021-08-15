@@ -27,14 +27,13 @@ git clone https://github.com/ros-drivers/velodyne.git
 
 sudo rosdep install --from-paths src --ignore-src --rosdistro YOURDISTRO -y
 
-cd ~/velodyne_ws/ #需要修改path
+cd ~/velodyne_ws
 
 catkin_make
 
 source devel/setup.bash
 
 echo "source ~/velodyne_ws/devel/setup.bash" >> ~/.bashrc
-
 ```
 
 测试
