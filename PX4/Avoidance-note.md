@@ -77,6 +77,25 @@ roslaunch avoidance.launch
 # OR
 roslaunch ~/px4_ws/src/avoidance/local_planner/launch/avoidance.launch
 ```
+
+## 开机自启动脚本: 未处理好
+
+`start.sh`    
+``` bash
+#!/bin/bash
+
+{
+	gnome-terminal -t "realsense" -x bash -c "roslaunch realsense2_camera rs_camera.launch filters:=pointcloud;exec bash"
+}&
+ 
+sleep 1s
+
+{
+	gnome-terminal -t "avodiance" -x bash -c "roslaunch ~/px4_ws/src/avoidance/local_planner/launch/avoidance.launch;exec bash"
+}&
+
+```
+
 ----
 
 ## `avoidance.launch` 记录
