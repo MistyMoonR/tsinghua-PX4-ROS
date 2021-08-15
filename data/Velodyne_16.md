@@ -21,15 +21,20 @@ sudo apt-get install ros-melodic-velodyne
 ```
 安装驱动(需要到自己的工作空间下)
 ``` bash
-cd ~/catkin_ws/src/ #需要修改path
+mkdir -p ~/velodyne_ws/src && cd ~/velodyne_ws/src
 
 git clone https://github.com/ros-drivers/velodyne.git
 
-rosdep install --from-paths src --ignore-src --rosdistro YOURDISTRO -y
+sudo rosdep install --from-paths src --ignore-src --rosdistro YOURDISTRO -y
 
-cd ~/catkin_ws/ #需要修改path
+cd ~/velodyne_ws/ #需要修改path
 
 catkin_make
+
+source devel/setup.bash
+
+echo "source ~/velodyne_ws/devel/setup.bash" >> ~/.bashrc
+
 ```
 
 测试
