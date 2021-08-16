@@ -78,23 +78,33 @@ roslaunch avoidance.launch
 roslaunch ~/px4_ws/src/avoidance/local_planner/launch/avoidance.launch
 ```
 
-## 开机自启动脚本: 未处理好
+## 开机自启动脚本
+系统设置 `users` - `Automatic Login` 开机直接进入桌面
 
-`start.sh`    
+新建 `start.sh`  
+```bash 
+sudo touch start.sh
+
+sudo chmod 777 start.sh 
+
+sudo gedit start.sh
+```
+把以下内容copy到 `start.sh`
+
 ``` bash
 #!/bin/bash
 
 {
-	gnome-terminal -t "realsense" -x bash -c "roslaunch realsense2_camera rs_camera.launch filters:=pointcloud;exec bash"
+        gnome-terminal -t "realsense2_camera" -x bash -c "source /opt/ros/melodic/setup.bash && source realsense_ws/devel/setup.bash && roslaunch realsense2_camera rs_camera.launch filters:=pointcloud;exec bash"
 }&
- 
+
 sleep 1s
-
 {
-	gnome-terminal -t "avodiance" -x bash -c "roslaunch ~/px4_ws/src/avoidance/local_planner/launch/avoidance.launch;exec bash"
+        gnome-terminal -t "avoidance" -x bash -c "source /opt/ros/melodic/setup.bash && source px4_ws/devel/setup.bash && roslaunch px4_ws/src/avoidance/local_planner/launch/avoidance.launch;exec bash"
 }&
-
 ```
+
+然后丢 `gnome-session-properties`
 
 ----
 

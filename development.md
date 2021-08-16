@@ -59,18 +59,19 @@ vscode 提示权限不足问题
 sudo chmod -R 777 xxx_ws
 ```
 
+
 ----
 ## ROS melodic
 运行 `scripts/ROS-melodic.sh`       
 脚本传送门: [ROS-melodic.sh](scripts/ROS-melodic.sh)
 
 ## RealSense
-需要手动下载 tar.gz     
+手动下载 tar.gz     
 按照文档指示来完成: [RealSense](data/RealSense.md)
 
 ## QGroundControl
 安装方式略麻烦, 具体方式看官网      
-官网传送门: https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html
+官网传送门: [QGC-download and install](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html)
 
 
 ----
@@ -82,8 +83,25 @@ sudo chmod -R 777 xxx_ws
 ----
 # SLAM
 
-先决条件: `ROS` + `lslidar_ws` + `xsens_ws`
+先决条件: `ROS` + `lslidar_ws` + `xsens_ws`     
 自行阅读 [LIO-SLAM](SLAM/LIO-SLAM.md)
+
+----
+## 网络部分
+采用AR750S 路由器，主要体积小，方便挂载无人机上     
+
+>**设置**      
+>局域网IP 设置`10.0.0.1`     
+>静态IP地址绑定 根据MAC地址来绑定IP   
+
+对应表: 
+```
+ros-NUC10-PX4 : 10.0.0.10 
+```
+`shh`后面IP中间可以省略, 比如10.1 对应 10.0.0.1 
+```
+ssh user@10.10
+```
 
 ----
 
