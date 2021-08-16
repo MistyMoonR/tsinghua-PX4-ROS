@@ -28,13 +28,13 @@ MAVROS: https://docs.px4.io/master/en/ros/mavros_installation.html
 # 和https://github.com/PX4/PX4-Autopilot.git 就是一个东西
 git clone https://github.com/PX4/Firmware.git --recursive
 
-cd /Firmware
+cd ~/Firmware
 
 # Install PX4 "common" dependencies.
 ./Tools/setup/ubuntu.sh --no-sim-tools --no-nuttx
 
 # Gstreamer plugins (for Gazebo camera)
-sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libgstreamer-plugins-base1.0-dev
+sudo apt install -y gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libgstreamer-plugins-base1.0-dev
 
 # This is necessary to prevent some Qt-related errors (feel free to try to omit it)
 export QT_X11_NO_MITSHM=1
