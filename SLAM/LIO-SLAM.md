@@ -15,39 +15,40 @@
 ----
 
 传送门: 
-* [velodyne(可选)](data/Velodyne_16.md)
-* [lslidar_c16](data/lslidar_c16.md)
-* [advanced_navigation_driver](data/Spatial.md)
-* [xsens Mti-300](data/MTi-300.md)
+* [velodyne](../data/Velodyne_16.md)
+* [lslidar_c16](../data/lslidar_c16.md)
+* [advanced_navigation_driver(弃用)](../data/Spatial.md)
+* [xsens Mti-300](../data/MTi-300.md)
 
 问题：
 
 - [x] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着(放弃)
 - [x] IMU和激光雷达数据融合
 
-**目前进度:** 准备把SLAM搬到无人机上    
-
-## 系统框架图
-
-![IMG](pictures/frame-v0.2.png)
-
 ----
+先决条件: `ROS` + `lslidar_ws` + `xsens_ws`
+
 
 ## SLAM部分
-
-### lego slam测试
-初步测试不怎么理想, IMU容易飘, 有空再做测试
-![IMG](pictures/lego-slam.png)
+来源: https://github.com/TixiaoShan/LIO-SAM
 
 ### lio slam测试
 
+运行指令:
+```
+roslaunch lio_sam run.launch
+```
+
 切换lio slam用屋顶数据集测试发现多了一个rostopic 发布话题 `/imu_correct` 经过研究发现这是用于转换的数据,bag里面带上不知原因   
 
-![IMG](pictures/roof-dataset.png)
+![IMG](/pictures/roof-dataset.png)
 
 经过研究发现lio slam内部带一个imu参数转换 (这么贴心)
 
-![IMG](pictures/imu_raw-imu_correct.png)
+![IMG](/pictures/imu_raw-imu_correct.png)
+
+
+配置文件:`LIO-SAM_ws/src/config/params.yaml`
 
 参数如下
 
@@ -107,12 +108,6 @@ source devel/setup.bash
 echo "source ~/imu_tools_ws/devel/setup.bash" >> ~/.bashrc
 ``` 
 ----
-路由器到手，测一下延迟。结论: 过路由和直连延迟都差不多，看来是有硬件加速...
-
-![IMG](pictures/ping.png)
-
-
-----
 
 ## rosbag的用法
 https://www.jianshu.com/p/6dd2c08d688e      
@@ -143,14 +138,7 @@ https://www.jianshu.com/p/6dd2c08d688e
 ----
 
 [Velodyne激光雷达ROS](../data/Velodyne_16.md)(可选)
-  
-----
 
-## 首先需要安装环境 (重要)
-
-[开发环境 安装 步骤](../Development-environment.md) 
-
-----
 
 ## 镭神激光雷达包
 来源： https://github.com/tianb03/lslidar_c16

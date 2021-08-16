@@ -12,10 +12,12 @@
 
 ## 驱动安装
 Download tar.gz            
-Github [librealsense v2.45.0](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)  
+Github [librealsense](https://github.com/IntelRealSense/librealsense/releases)  
 
 ``` bash
 cd librealsense [tab]
+
+#下面建议touch scripts 来自动化
 sudo apt update && sudo apt -y upgrade
 sudo apt-get install -y git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
 sudo apt-get install -y libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev

@@ -35,6 +35,8 @@ sudo gedit /etc/default/grub
 sudo update-grub
 ```
 
+ubuntu中文输入法方法: [Ubuntu 18.04 配置ibus中文拼音输入法](https://blog.csdn.net/wu10188/article/details/86540464)     
+
 测网速工具 net-tool: `vnstat`
 
 负载测试: 
@@ -45,8 +47,6 @@ sudo update-grub
 ```bash
 stress --cpu 12 --timeout 300
 ```
-
-----
 
 扩盘神器: `Gparted`
 ``` bash
@@ -60,6 +60,33 @@ sudo chmod -R 777 xxx_ws
 ```
 
 ----
+## ROS melodic
+运行 `scripts/ROS-melodic.sh`       
+脚本传送门: [ROS-melodic.sh](scripts/ROS-melodic.sh)
+
+## RealSense
+需要手动下载 tar.gz     
+按照文档指示来完成: [RealSense](data/RealSense.md)
+
+## QGroundControl
+安装方式略麻烦, 具体方式看官网      
+官网传送门: https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html
+
+
+----
+# PX4 Avoidance
+
+先决条件: `ROS` + `RealSense` + `Mavros`        
+自行阅读文档 [Avoidance](PX4/Avoidance.md)
+
+----
+# SLAM
+
+先决条件: `ROS` + `lslidar_ws` + `xsens_ws`
+自行阅读 [LIO-SLAM](SLAM/LIO-SLAM.md)
+
+----
+
 ## 构建自己的ws (Velodyne16 + mti-300)
 `vm_ws`
 
