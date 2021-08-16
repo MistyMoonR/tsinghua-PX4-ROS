@@ -17,7 +17,37 @@
 - 飞控: PX4
 
 ----
-# SLAM Table
+## 传送门
+
+- [Note](note.md)     
+- [Development](development.md)       
+- [Data](data/README.md)  
+
+----
+## 系统框架图
+
+![IMG](pictures/frame-v0.2.png)
+
+
+## 框架介绍
+
+## PX4 
+代表无人机项目, 子项目有`Avoidance` + `Mavros` + `Realsense`     
+
+`Avoidance` 是无人机自动避障        
+`Mavros` 是PX4飞控和ROS环境的桥梁, 通过串口     
+`Realsense`是intel深度相机的工作空间, 负责测距, 配合`Avoidance`使用
+
+## LIO-SLAM
+代表3D SLAM建模项目, 子项目有`lslidar_c16` + `mti-300`
+
+`lslidar_c16` 是激光雷达ROS工作空间     
+`mti-300` 是九轴IMU ROS工作空间
+
+配置环境需要仔细阅读文档 [development](development.md)
+
+----
+## SLAM Table
 
 
 | SLAM Algorithm with Github                                       | Mechanism | Appendix & Paper                                |
@@ -33,18 +63,6 @@
 | [RPG-SVO-PRO-OPEN](https://github.com/uzh-rpg/rpg_svo_pro_open)  | UZH       |                                                 |
      
 ----
-## 传送门
-
-- [Note](note.md)     
-- [Development](development.md)       
-- [Data](/data/README.md)  
-
-----
-关于传感器:
-https://answers.ros.org/question/209181/advanced-nav-drivers-and-ros/
-
-----
-
 ## 数据集下载: 
 [Visual Odometry / SLAM Evaluation 2012](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)        
 [jackal_dataset](https://github.com/RobustFieldAutonomyLab/jackal_dataset_20170608)  
@@ -59,7 +77,7 @@ ICRA 论文介绍: https://zhuanlan.zhihu.com/p/388715878
 ----
 
 ## 硬件相关:
-### intel D435i 双目摄像头相关(由于玄学问题，需要降级到v2.45.0版本):  
+### intel D435i 双目摄像头相关
 Github: [librealsense](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)      
 ROS: [realsense-ros](https://github.com/IntelRealSense/realsense-ros)
 
