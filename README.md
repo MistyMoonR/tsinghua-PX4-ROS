@@ -1,6 +1,10 @@
 # tsinghua-SLAM
 
-记录SLAM一些paper, 直接用在无人机上
+开发过程中删除不少东西, 下载该文件建议 `depth=1`
+
+```bash
+git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
+```
 
 ----
 

@@ -19,10 +19,12 @@
 ## 镭神激光雷达包
 来源： https://github.com/tianb03/lslidar_c16
 
+问镭神那边要了一个ROS包 [LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz](LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz)
+
 ``` bash
 mkdir -p ~/lslidar_ws/src && cd ~/lslidar_ws/src
 
-cp -R /usr/local/xsens/xsens_ros_mti_driver ./
+cp -R xxx ./
 
 cd ..
 
@@ -32,7 +34,9 @@ source devel/setup.bash
 
 echo "source ~/lslidar_ws/devel/setup.bash" >> ~/.bashrc
 ``` 
+
 测试：  
+
 ``` bash
 roslaunch lslidar_c16_decoder lslidar_c16.launch --screen    
 ```
