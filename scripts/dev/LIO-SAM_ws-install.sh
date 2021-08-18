@@ -28,8 +28,9 @@ source ~/.bashrc
 
 
 echo
-/bin/echo -e "\e[1;36m !---------------------------------------------!\e[0m"
-/bin/echo -e "\e[1;36m ! gtsam 和 lio_sam_ws 安装完成                 !\e[0m"
-/bin/echo -e "\e[1;36m ! 测试: roslaunch lio_sam run.launch           !\e[0m"
-/bin/echo -e "\e[1;36m !---------------------------------------------!\e[0m"
+/bin/echo -e "\e[1;36m !------------------------------------------------------------!\e[0m"
+/bin/echo -e "\e[1;36m ! gtsam 和 lio_sam_ws 安装完成                                 !\e[0m"
+/bin/echo -e "\e[1;36m ! 测试: roslaunch lio_sam run.launch                          !\e[0m"
+/bin/echo -e "\e[1;36m ! sudo cp /usr/local/lib/libmetis.so /opt/ros/melodic/lib    !\e[0m"
+/bin/echo -e "\e[1;36m !------------------------------------------------------------!\e[0m"
 echo

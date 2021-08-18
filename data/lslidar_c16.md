@@ -17,16 +17,15 @@
 传送门: [C16 产品资料](../doc/C16%20%20产品资料.pdf) [C16 产品使用手册](../doc/C16%20产品使用手册.pdf)  [C16 产品结构图](../doc/C16%20产品结构图.pdf)
 
 ## 镭神激光雷达包
-来源： https://github.com/tianb03/lslidar_c16
 
-问镭神那边要了一个ROS包 [LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz](LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz)
+问镭神那边要了一个ROS包 [LSLIDAR_C16_V3.1.0_210726_ROS.tar.gz](LSLIDAR_C16_V3.1.0_210726_ROS.tar.gz)
 
-大概比较了下这两个, 感觉没啥区别
+开发者说去掉NaN点
 
 ``` bash
 mkdir -p ~/lslidar_ws/src && cd ~/lslidar_ws/src
 
-git clone https://github.com/tianb03/lslidar_c16.git
+cp xxx
 
 cd ..
 
