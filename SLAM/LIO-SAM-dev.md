@@ -18,6 +18,8 @@
 # LIO-SAM 整个环境安装
 来源: https://github.com/TixiaoShan/LIO-SAM
 
+> 已经提供安装脚本 [LIO-SAM_ws-install.sh](../scripts/dev/LIO-SAM_ws-install.sh)    
+> `gtsam` + `LIO-SAM_ws`
 ## gstam安装
 ```bash
 wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.2.zip

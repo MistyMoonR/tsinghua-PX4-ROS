@@ -14,6 +14,10 @@
 插网线, web进入后台,直接在host 部分填 `255.255.255.255` 这样同一个网段下所有设备都可以接收到来自Velodyne的数据
 
 ----
+## ROS包安装
+
+> 已经提供安装脚本 [velodyne_ws-install.sh](../scripts/dev/velodyne_ws-install.sh)      
+> `velodyne_ws`
 
 安装依懒(重要)
 ``` bash
