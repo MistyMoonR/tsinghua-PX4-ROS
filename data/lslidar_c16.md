@@ -21,10 +21,12 @@
 
 问镭神那边要了一个ROS包 [LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz](LSLIDAR_C16_V3.0.4_200910_ROSK.tar.gz)
 
+大概比较了下这两个, 感觉没啥区别
+
 ``` bash
 mkdir -p ~/lslidar_ws/src && cd ~/lslidar_ws/src
 
-cp -R xxx ./
+git clone https://github.com/tianb03/lslidar_c16.git
 
 cd ..
 
@@ -43,6 +45,9 @@ roslaunch lslidar_c16_decoder lslidar_c16.launch --screen
 需要把 `Global Options` 中修改为 `/laser_link`
 
 ![IMG](/pictures/lslidar_c16_7.13.png)
+
+
+备注：若修改了雷达目的端口及转速，请打开 lslidar_c16.launch 进行相应的修改配置，默认端口为 2368，转速为 10HZ 即 point_num 为 2000 点。
 
 ----
 来源：
