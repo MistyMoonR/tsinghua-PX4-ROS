@@ -8,7 +8,7 @@
 
 ## SLAM 系统框架图
 
-![IMG](/pictures/SLAM-V0.3.png)
+![IMG](../pictures/SLAM-V0.3.png)
 
 
 ## SLAM 激光雷达传送门

@@ -5,9 +5,9 @@
 - ROS melodic 1.14.11
 - Unitree_Ros change to ROS_ws
 ----
-## 系统框架图
+## PX4 系统框架图
 
-![IMG](/pictures/PX4-V0.3.png)
+![IMG](../pictures/PX4-V0.3.png)
 
 
 ## PX4飞控传送门 
