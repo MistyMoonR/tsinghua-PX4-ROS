@@ -1,4 +1,4 @@
-# tsinghua-SLAM
+# tsinghua-SLAM-README
 
 开发过程中删除不少东西, 下载该文件建议 `depth=1`
 

@@ -200,7 +200,6 @@ ls -l /dev/ttyUSB*
 
 测试`mavros`
 ```bash
-#本机测试
 roslaunch mavros px4.launch fcu_url:=/dev/ttyUSB0:921600 gcs_url:=udp://@127.0.0.1:14550
 ```
 然后本机器运行QGC, 不出意外的话会显示connected

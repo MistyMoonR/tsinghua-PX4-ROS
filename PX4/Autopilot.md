@@ -102,9 +102,7 @@ sudo bash ./install_geographiclib_datasets.sh
 ### MAVROS Installation
 ``` bash 
 mkdir -p ~/catkin_ws/src && cd ~/catkin_ws
-
 catkin init
-
 wstool init src
 ``` 
 
