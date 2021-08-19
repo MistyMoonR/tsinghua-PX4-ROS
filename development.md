@@ -11,14 +11,26 @@
 - Xsens Mti-300
 - 路由器: AR750S
 - 飞控: PX4
+
+
 ----
+目录:
+- [SLAM](#slam)
+  - [NUC10](#nuc10)
+  - [网络部分](#网络部分)
+- [Development Install](#development-install)
+  - [ROS melodic Install](#ros-melodic-install)
+  - [APP for development](#app-for-development)
+  - [RealSense](#realsense)
+  - [QGroundControl](#qgroundcontrol)
+  - [Velodyne ROS](#velodyne-ros)
+  - [镭神 C16 ROS](#镭神-c16-ros)
+  - [MTi-300 ROS](#mti-300-ros)
+- [PX4 Avoidance](#px4-avoidance)
+- [SLAM](#slam-1)
+  - [构建自己的ws (Velodyne16 + mti-300)](#构建自己的ws-velodyne16--mti-300)
+- [IMU的坐标变换 TF](#imu的坐标变换-tf)
 
-* [velodyne(可选)](data/Velodyne_16.md)
-* [lslidar_c16](data/lslidar_c16.md)
-* [advanced_navigation_driver](data/Spatial.md)
-
-问题：
-- [x] 文档还未完善,准备链接到ROS那边去
 
 ## NUC10
 
@@ -59,34 +71,6 @@ vscode 提示权限不足问题
 sudo chmod -R 777 xxx_ws
 ```
 
-
-----
-## ROS melodic
-运行 `scripts/ROS-melodic.sh`       
-脚本传送门: [ROS-melodic.sh](scripts/ROS-melodic.sh)
-
-## RealSense
-手动下载 tar.gz     
-按照文档指示来完成: [RealSense](data/RealSense.md)
-
-## QGroundControl
-安装方式略麻烦, 具体方式看官网      
-官网传送门: [QGC-download and install](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html)
-
-
-----
-# PX4 Avoidance
-
-先决条件: `ROS` + `RealSense` + `Mavros`        
-自行阅读文档 [Avoidance](PX4/Avoidance.md)
-
-----
-# SLAM
-
-先决条件: `ROS` + `lslidar_ws` + `xsens_ws`     
-自行阅读 [LIO-SLAM](SLAM/LIO-SLAM.md)
-
-----
 ## 网络部分
 采用AR750S 路由器，主要体积小，方便挂载无人机上     
 
@@ -102,6 +86,58 @@ ros-NUC10-PX4 : 10.0.0.10
 ```
 ssh user@10.10
 ```
+
+
+----
+# Development Install
+安装顺序: 建议下面一步一步来, 也可以按照需求来装
+
+## ROS melodic Install
+运行 `scripts/dev/ROS-melodic.sh`       
+脚本说明: 更改清华源, 国内安装速度更快些, 只能用于Ubuntu18.04       
+脚本传送门: [ROS-melodic.sh](scripts/dev/ROS-melodic.sh)
+
+## APP for development
+运行 `scripts/dev/dev-tools.sh`    
+脚本说明: 安装一些便于开发的APP          
+脚本传送门: [dev-tools.sh](scripts/dev/dev-tools.sh)
+
+## RealSense
+手动下载 tar.gz     
+按照文档指示来完成: [RealSense](data/RealSense.md)
+
+## QGroundControl
+安装方式略麻烦, 具体方式看官网      
+官网传送门: [QGC-download and install](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html)
+
+## Velodyne ROS
+运行`scripts/dev/velodyne_ws-install.sh`        
+脚本传送门: [velodyne_ws-install.sh](scripts/dev/velodyne_ws-install.sh)        
+按照文档指示来完成: [Velodyne_16](data/Velodyne_16.md)
+
+## 镭神 C16 ROS
+ROS包已经上传此Github data目录下面     
+按照文档指示来完成: [lslidar_c16](data/lslidar_c16.md)
+
+## MTi-300 ROS
+按照文档指示来完成: [MTi-300](data/MTi-300.md)
+
+----
+# PX4 Avoidance
+
+先决条件: `ROS` + `RealSense` + `Mavros`        
+自行阅读文档 [Avoidance](PX4/Avoidance.md)
+
+----
+# SLAM
+
+先决条件: `ROS` + `lslidar_ws` + `xsens_ws`         
+运行`scripts/dev/LIO-SAM_ws.sh`        
+脚本传送门: [velodyne_ws-install.sh](scripts/dev/LIO-SAM_ws-install.sh)         
+按照文档指示来完成: [LIO-SAM-dev](SLAM/LIO-SAM-dev.md)
+
+----
+
 
 ----
 
@@ -129,7 +165,6 @@ source devel/setup.bash
 
 echo "source ~/vm_ws/devel/setup.bash" >> ~/.bashrc
 
----
 ```
 
 ----
@@ -137,11 +172,6 @@ echo "source ~/vm_ws/devel/setup.bash" >> ~/.bashrc
 脚本问题解决
 ``` bash
 sed -i "s/\r//" xxx.sh
-```
-
-下载 + 编译
-``` bash
-
 ```
 
 ----

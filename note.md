@@ -62,50 +62,6 @@
                   0, 0, 1]
 ```
 
-搬到NUC10上测试发现lio_sam_imuPreintegration问题
-
-解决方案: https://githubmemory.com/repo/TixiaoShan/LIO-SAM/issues/247
-
-``` bash
-#纯手敲，建议自行tab补全
-sudo cp /usr/local/lib/libmetis.so /opt/ros/melodic/lib
-```
-PS: 这个地方贼迷惑，编译要/usr，跑起来要/opt,换句话说 两边缺一不可(感觉挺合适埋雷进去)
-
-----
-
-下载 + 编译
-``` bash
-git clone xxxx
-
-cd  #到~/home下
-mkdir -p ROS_ws/src
-cd ROS_ws/src
-catkin_init_workspace
-mv xxxx #把code里面的src拷贝过去
-cd ..
-catkin_make
-```
-
-----
-IMU 可视化 测试工具: 
-https://github.com/ccny-ros-pkg/imu_tools
-
-``` bash
-mkdir -p ~/imu_tools_ws/src && cd ~/imu_tools_ws/src
-
-git clone https://github.com/ccny-ros-pkg/imu_tools.git
-
-cd ..
-
-##编译前 注释 PLUGINLIB_DECLARE_CLASS
-
-catkin_make
-
-source devel/setup.bash
-
-echo "source ~/imu_tools_ws/devel/setup.bash" >> ~/.bashrc
-``` 
 ----
 路由器到手，测一下延迟。结论: 过路由和直连延迟都差不多，看来是有硬件加速...
 
@@ -117,52 +73,43 @@ echo "source ~/imu_tools_ws/devel/setup.bash" >> ~/.bashrc
 ## rosbag的用法
 https://www.jianshu.com/p/6dd2c08d688e      
 
+详细参考 [rosbag](data/rosbag.md) 文档
 
-
-| 命令       | 作用                                                  |
-| :--------- | :---------------------------------------------------- |
-| check      | 确定一个包是否可以在当前系统中进行,或者是否可以迁移。 |
-| decompress | 压缩一个或多个包文件。                                |
-| filter     | 解压一个或多个包文件。                                |
-| fix        | 在包文件中修复消息,以便在当前系统中播放。             |
-| help       | 获取相关命令指示帮助信息                              |
-| info       | 总结一个或多个包文件的内容。                          |
-| play       | 以一种时间同步的方式回放一个或多个包文件的内容。      |
-| record     | 用指定主题的内容记录一个包文件。                      |
-| reindex    | 重新索引一个或多个包文件。                            |
-
-
-| 命令            | 作用                 |
-| :-------------- | :------------------- |
-| -r              | 速率                 |
-| -l              | 循环loop             |
-| --topic /topic1 | 只播放选择topic      |
-| --pause         | 开始暂停,空格恢复    |
-| -a              | record 记录所有topic |
-
-----
-
-[Velodyne激光雷达ROS](../data/Velodyne_16.md)(可选)
-  
-----
-
-## 首先需要安装环境 (重要)
-
-[开发环境 安装 步骤](../Development-environment.md) 
-
-----
-
-## 镭神激光雷达包
-来源： https://github.com/tianb03/lslidar_c16
-
-测试：  
-
+## 终.
+无人机起飞, 运行 `PX4-SLAM-record.sh` 脚本记录
 ``` bash
-roslaunch lslidar_c16_decoder lslidar_c16.launch --screen    
+rosbag record /lslidar_pointcloud_c16 /mavros/imu/data /mavros/gpsstatus/gps1/raw
 ```
-需要把 `Global Options` 中修改为 `/laser_link`
 
-![IMG](pictures/lslidar_c16_7.13.png)
+----
+# PX4 
+
+## Mavros 部分
+
+### IMU
+测试过程中意外发现PX4飞控里面自带九轴IMU
+```
+/mavros/imu/data
+```
+
+![IMG](pictures/mavros_imudata.png)
+
+### GPS数据
+```
+/mavros/gpsstatus/gps1/raw
+```
+![IMG](pictures/mavros_gps.png)
+
+### topic
+![IMG](pictures/mavros_topic.png)
+
+# SLAM
+
+镭神激光雷达
+```
+/lslidar_pointcloud_c16
+```
+
 
 ----
 
