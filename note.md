@@ -20,16 +20,8 @@
 * [advanced_navigation_driver](data/Spatial.md)
 * [xsens Mti-300](data/MTi-300.md)
 
-问题：
 
-- [x] Spatial 九轴陀螺仪有ROS包，官方(MIT)提供的包发现CPU占用过高，Github上有另外fork，但是放到ROS_ws编译不通过，先放着(放弃)
-- [x] IMU和激光雷达数据融合
-
-**目前进度:** 准备把SLAM搬到无人机上    
-
-## 系统框架图
-
-![IMG](pictures/frame-v0.2.png)
+**目前进度:** 终.
 
 ----
 

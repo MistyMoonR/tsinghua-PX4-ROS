@@ -17,8 +17,10 @@ git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
 - NUC8 i7-8650U & NUC10 i7-10710U
 - 镭神激光雷达 C16 / Velodyne VPL-16
 - Xsens Mti-300
+- 摄像头: RealSense D455 & D435i
 - 路由器: AR750S
 - 飞控: PX4
+- 一个能飞的无人机
 
 ----
 ## 传送门
@@ -30,13 +32,13 @@ git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
 ----
 ## 系统框架图
 
-![IMG](pictures/frame-v0.2.png)
+![IMG](pictures/PX4+SLAM-V0.3.png)
 
 
 ## 框架介绍
 
 ## PX4 
-代表无人机项目, 子项目有`Avoidance` + `Mavros` + `Realsense`     
+代表无人机PX4飞控, 子项目有`Avoidance` + `Mavros` + `Realsense`     
 
 `Avoidance` 是无人机自动避障        
 `Mavros` 是PX4飞控和ROS环境的桥梁, 通过串口     
@@ -46,9 +48,38 @@ git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
 代表3D SLAM建模项目, 子项目有`lslidar_c16` + `mti-300`
 
 `lslidar_c16` 是激光雷达ROS工作空间     
-`mti-300` 是九轴IMU ROS工作空间
+`mti-300` 是九轴IMU ROS工作空间 PS:后期发现PX4飞控里面自带九轴IMU, 这部分可以省略掉, 如果你是初学者, 建议最好还是准备个高频九轴IMU, 200Hz以上.
 
-配置环境需要仔细阅读文档 [development](development.md)
+----
+
+**配置环境需要仔细阅读文档 [development](development.md)**
+
+----
+## 文档说明 
+
+### SLAM 激光雷达部分: 
+[LIO-SAM-dev](SLAM/LIO-SAM-dev.md) LIO-SAM ROS 开源项目环境配置     
+[LIO-SAM-note](SLAM/LIO-SAM-note.md) LIO-SAM ROS 开源项目记录, 包含LIO-SAM在ROS机器上用法, 配置文件, 问题解决方案等等
+
+### PX4飞控部分:  
+[Autopilot](PX4/Autopilot.md): PX4/Autopliot PX4 ROS开源项目, 包含Mavros等等, 建议0基础新手从这个入手. 过一遍官方教程       
+[Avoidance-dev](PX4/Avoidance-dev.md): PX4/Avoidance 避障开源项目环境配置       
+[Avoidance-note](PX4/Avoidance-note.md): PX4/Avoidance 避障开源项目记录, 包含avoidance在ROS机器上的用法, 问题解决方案和脚本等等
+
+### data & doc
+内部包含我项目中使用到的硬件的说明文档, 并且整理了下, 可以按需看.
+包括但不限于
+
+[lslidar_c16](data/lslidar_c16.md)      
+[MTi-300](data/MTi-300.md)      
+[RealSense](data/RealSense.md)      
+[rosbag](data/rosbag.md)        
+[Spatial](data/Spatial.md)      
+[Velodyne_16](data/Velodyne_16.md)      
+
+### scripts
+分为两种, 一个用于配置ROS环境, 一个用于运行ROS程序      
+大多数脚本有相应文档来要求使用
 
 ----
 ## SLAM Table
@@ -81,7 +112,7 @@ ICRA 论文介绍: https://zhuanlan.zhihu.com/p/388715878
 ----
 
 ## 硬件相关:
-### intel D435i 双目摄像头相关
+### intel 双目摄像头相关
 Github: [librealsense](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)      
 ROS: [realsense-ros](https://github.com/IntelRealSense/realsense-ros)
 
