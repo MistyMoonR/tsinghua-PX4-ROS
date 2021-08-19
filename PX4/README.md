@@ -7,7 +7,7 @@
 ----
 ## PX4 系统框架图
 
-![IMG](../pictures/PX4-V0.3.png)
+![IMG](../pictures/PX4-V0.4.png)
 
 
 ## PX4飞控传送门 
