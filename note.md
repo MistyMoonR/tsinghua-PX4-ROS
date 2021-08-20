@@ -102,6 +102,16 @@ rosbag record /lslidar_pointcloud_c16 /mavros/imu/data /mavros/gpsstatus/gps1/ra
 /lslidar_pointcloud_c16
 ```
 
+## rosbag 体积计算   
+`stat`    
+SIZE单位 Byte      
+转换GB 除以 : 1073741824
+
+>1字节(Byte)=8位(bit)     
+>1KB( Kilobyte，千字节)=1024B    
+>1MB( Megabyte，兆字节)=1024KB     
+>1GB( Gigabyte，吉字节，千兆)=1024MB   
+
 
 ----
 
