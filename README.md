@@ -91,43 +91,23 @@ Most scripts have the appropriate documentation to require the use of
 | [LVI-SAM](https://github.com/TixiaoShan/LVI-SAM)                 | CMU       | [Paper: LVI-SAM][Paper: LVI-SAM-L]              |
 | [A-LOAM](https://github.com/HKUST-Aerial-Robotics/A-LOAM)        | HKUST     |                                                 |
 | [FAST-LIO](https://github.com/gisbi-kim/SC-A-LOAM)               | KAIST     |                                                 |
-| [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | Stevens   | [LeGO-分析][知乎LeGO-L] & [LeGO-初探][BlogLeGO-L] |
-| [SC-LeGO-LOAM](https://github.com/irapkaist/SC-LeGO-LOAM)        | KAIST     | [Github: 中文注释][Github中文注释-L]              |
-| [XCHU-SLAM](https://github.com/JokerJohn/xchu_slam)              | Beihang   | [3D激光SLAM系统][知乎3D激光SLAM系统-L]             |
+| [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | Stevens   | [LeGO-Analysis][知乎LeGO-L] & [LeGO-A First Look][BlogLeGO-L] |
+| [SC-LeGO-LOAM](https://github.com/irapkaist/SC-LeGO-LOAM)        | KAIST     | [Github: Chinese commentary][Github中文注释-L]              |
+| [XCHU-SLAM](https://github.com/JokerJohn/xchu_slam)              | Beihang   | [3D laser SLAM system][知乎3D激光SLAM系统-L]             |
 | [LOAM-LIVOX](https://github.com/hku-mars/loam_livox)             | HKU       |                                                 |
 | [RPG-SVO-PRO-OPEN](https://github.com/uzh-rpg/rpg_svo_pro_open)  | UZH       |                                                 |
      
 ----
-## 数据集下载: 
+## Download the dataset: 
 [Visual Odometry / SLAM Evaluation 2012](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)        
 [jackal_dataset](https://github.com/RobustFieldAutonomyLab/jackal_dataset_20170608)  
-## 数据集使用:
+## Data set use:
 Github: [file_player_mulran](https://github.com/irapkaist/file_player_mulran)    
 Youtube: [How to run MulRan ROS file player](https://www.youtube.com/watch?v=uU-FC-GmHXA&t=45s)
 
-## 相关论文:
+## Related papers:
 [ICRA2021 Paper](https://github.com/MistyMoonR/ICRA2021-SLAM-paper-list)        
-ICRA 论文介绍: https://zhuanlan.zhihu.com/p/388715878       
-
-----
-
-## 硬件相关:
-### intel 双目摄像头相关
-Github: [librealsense](https://github.com/IntelRealSense/librealsense/releases/tag/v2.45.0)      
-ROS: [realsense-ros](https://github.com/IntelRealSense/realsense-ros)
-
-### Velodyne 16线激光雷达:     
-Github:  [velodyne](https://github.com/ros-drivers/velodyne.git)        
-ROS wiki: [Getting Started with the Velodyne VLP16](http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16)
-
-### 镭神激光雷达 C16:    
-Github:  [lslidar_c16](https://github.com/tianb03/lslidar_c16)      
-博客: [镭神激光雷达官方驱动安装适配](https://www.jianshu.com/p/d8efdf333e98)
-
-### 九轴IMU - Spatial:     
-Official website: [Spatial](https://www.advancednavigation.com/products/spatial)        
-ROS wiki: [advanced_navigation_driver](http://wiki.ros.org/advanced_navigation_driver)   
-
+ICRA Introduction: https://zhuanlan.zhihu.com/p/388715878       
 
 ----
 [Paper: LOAM-L]:paper/LOAM:%20Lidar%20Odometry%20and%20Mapping%20in%20Real-time.pdf
