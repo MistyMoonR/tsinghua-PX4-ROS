@@ -1,74 +1,74 @@
 # tsinghua-SLAM-README
 
-开发过程中删除不少东西, 下载该文件建议 `depth=1`
+A lot of things were removed during development, clone this file is recommended `depth=1`
 
 ```bash
 git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
 ```
 
 ----
-
-系统环境： 
+System environment: 
 - Ubuntu18.04.5 LTS x86_64 
 - Kernel: 5.4.0-80-generic
 - ROS melodic 1.14.11
   
-硬件：
+Hardware：
 - NUC8 i7-8650U & NUC10 i7-10710U
-- 镭神激光雷达 C16 / Velodyne VPL-16
+- leishen LiDAR C16
+- Camera: RealSense D455 & D435i
 - Xsens Mti-300
-- 摄像头: RealSense D455 & D435i
-- 路由器: AR750S
-- 飞控: PX4
-- 一个能飞的无人机
+- Routers: AR750S
+- Flight Control: Pixhawk 4
+- A drone
+
 
 ----
-## 传送门
+## Portal
 
 - [Note](note.md)     
 - [Development](development.md)       
 - [Data](data/README.md)  
 
 ----
-## 系统框架图
+## System framework diagram
 
 ![IMG](pictures/PX4+SLAM-V0.3.png)
 
 
-## 框架介绍
+## Introduction to the framework
 
 ## PX4 
-代表无人机PX4飞控, 子项目有`Avoidance` + `Mavros` + `Realsense`     
+Representing the UAV PX4 flight control, the sub-projects are `Avoidance` + `Mavros` + `Realsense`       
 
-`Avoidance` 是无人机自动避障        
-`Mavros` 是PX4飞控和ROS环境的桥梁, 通过串口     
-`Realsense`是intel深度相机的工作空间, 负责测距, 配合`Avoidance`使用
+`Avoidance` is automatic obstacle avoidance for drones        
+`Mavros` is the bridge between the PX4 flight control and the ROS environment, via the serial port     
+`Realsense` is the working space for the intel depth camera, responsible for ranging, used in conjunction with `Avoidance`
 
 ## LIO-SLAM
-代表3D SLAM建模项目, 子项目有`lslidar_c16` + `mti-300`
+On behalf of the 3D SLAM modelling project, the sub-projects are `lslidar_c16` + `mti-300`
 
-`lslidar_c16` 是激光雷达ROS工作空间     
-`mti-300` 是九轴IMU ROS工作空间 PS:后期发现PX4飞控里面自带九轴IMU, 这部分可以省略掉, 如果你是初学者, 建议最好还是准备个高频九轴IMU, 200Hz以上.
-
-----
-
-**配置环境需要仔细阅读文档 [development](development.md)**
+`lslidar_c16` It's a LiDAR ROS workspace       
+`mti-300` It is a 9-axis IMU ROS workspace PS: It was discovered later that the PX4 comes with a nine-axis IMU, this part can be omitted, if you are a beginner, it is advisable to have a high frequency nine-axis IMU, 200Hz or more.
 
 ----
-## 文档说明 
 
-### SLAM 激光雷达部分: 
-[LIO-SAM-dev](SLAM/LIO-SAM-dev.md) LIO-SAM ROS 开源项目环境配置     
-[LIO-SAM-note](SLAM/LIO-SAM-note.md) LIO-SAM ROS 开源项目记录, 包含LIO-SAM在ROS机器上用法, 配置文件, 问题解决方案等等
+**Configuration of the environment requires careful reading of the documentation [development](development.md)**
 
-### PX4飞控部分:  
-[Autopilot](PX4/Autopilot.md): PX4/Autopliot PX4 ROS开源项目, 包含Mavros等等, 建议0基础新手从这个入手. 过一遍官方教程       
-[Avoidance-dev](PX4/Avoidance-dev.md): PX4/Avoidance 避障开源项目环境配置       
-[Avoidance-note](PX4/Avoidance-note.md): PX4/Avoidance 避障开源项目记录, 包含avoidance在ROS机器上的用法, 问题解决方案和脚本等等
+----
+## Document description  
+
+### SLAM Lidar section: 
+[LIO-SAM-dev](SLAM/LIO-SAM-dev.md)  LIO-SAM ROS open source project environment configuration     
+[LIO-SAM-note](SLAM/LIO-SAM-note.md) LIO-SAM ROS open source project documentation, including LIO-SAM usage on ROS machines, configuration files, problem solutions, etc.
+
+### PX4 flight control section:  
+[Autopilot](PX4/Autopilot.md): PX4/Autopliot PX4 ROS open source project , including Mavros and so on, we recommend that newcomers start from the official tutorials        
+[Avoidance-dev](PX4/Avoidance-dev.md): PX4/Avoidance avoidance open source project environment configuration           
+[Avoidance-note](PX4/Avoidance-note.md):  PX4/Avoidance avoidance open source project documentation, including avoidance in ROS machine usage, problem solving and scripting , etc.     
 
 ### data & doc
-内部包含我项目中使用到的硬件的说明文档, 并且整理了下, 可以按需看.
-包括但不限于
+The documentation for the hardware used in my project is included inside and is organised so that you can see it as you need it.
+This includes but is not limited to
 
 [lslidar_c16](data/lslidar_c16.md)      
 [MTi-300](data/MTi-300.md)      
@@ -78,8 +78,8 @@ git clone --depth=1 https://github.com/MistyMoonR/tsinghua-SLAM.git
 [Velodyne_16](data/Velodyne_16.md)      
 
 ### scripts
-分为两种, 一个用于配置ROS环境, 一个用于运行ROS程序      
-大多数脚本有相应文档来要求使用
+There are two types, one for configuring the ROS environment and one for running ROS programs             
+Most scripts have the appropriate documentation to require the use of
 
 ----
 ## SLAM Table

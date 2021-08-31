@@ -1,20 +1,20 @@
 # SLAM
 
-系统环境： 
+System environment: 
 - Ubuntu18.04.5 LTS x86_64 
 - Kernel: 5.4.0-80-generic
 - ROS melodic 1.14.11
-
-硬件：
+  
+Hardware：
 - NUC8 i7-8650U & NUC10 i7-10710U
-- 镭神激光雷达 C16
+- leishen LiDAR C16
 - Xsens Mti-300
-- 路由器: AR750S
-- 飞控: PX4
+- Routers: AR750S
+- Flight Control: PX4
 
 
 ----
-目录:
+Contents:
 - [SLAM](#slam)
   - [NUC10](#nuc10)
   - [网络部分](#网络部分)
