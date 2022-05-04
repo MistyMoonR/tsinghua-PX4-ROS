@@ -1,4 +1,4 @@
-# tsinghua-SLAM-README
+# tsinghua-PX4-ROS-README
 
 A lot of things were removed during development, clone this file is recommended `depth=1`
 
